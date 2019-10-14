@@ -5,7 +5,9 @@ mapboxgl.accessToken =
 
         var map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/dark-v9',
+            style: 'mapbox://styles/mapbox/light-v10',
             center: [13.673237, 47.402031], // starting position [lng, lat]
-            zoom: 14
+            zoom: 14,
+            pitch: 60, // pitch in degrees
+            bearing: 160, // bearing in degrees
         });
