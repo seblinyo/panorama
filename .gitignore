@@ -1,0 +1,5 @@
+config.js
+webapp/scripts/config.js
+node_modules
+webapp/node_modules
+*.pyc
