@@ -1,4 +1,4 @@
-# panaroma
+# panorama
 
 ### A panorama web application for Tourists
 
