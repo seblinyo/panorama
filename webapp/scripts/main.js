@@ -1,13 +1,34 @@
 console.log("Works");
 
 mapboxgl.accessToken =
-            'pk.eyJ1Ijoic2ViYXN0aWFuLWNoIiwiYSI6ImNpejkxdzZ5YzAxa2gyd21udGpmaGU0dTgifQ.IrEd_tvrl6MuypVNUGU5SQ';
+    'pk.eyJ1Ijoic2ViYXN0aWFuLWNoIiwiYSI6ImNpejkxdzZ5YzAxa2gyd21udGpmaGU0dTgifQ.IrEd_tvrl6MuypVNUGU5SQ';
 
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/sebastian-ch/cje2r4vgm27z92rm2ea2nvglu',
-            center: [13.673237, 47.402031], // starting position [lng, lat]
-            zoom: 14,
-            pitch: 60, // pitch in degrees
-            bearing: 160, // bearing in degrees
-        });
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+    center: [13.673237, 47.402031], // starting position [lng, lat]
+    zoom: 14,
+    pitch: 60, // pitch in degrees
+    bearing: 160, // bearing in degrees
+});
+
+map.on('load', function () {
+
+    map.addLayer({
+        "id": "terrain-data",
+        "type": "line",
+        "source": {
+            type: 'vector',
+            url: 'mapbox://mapbox.mapbox-terrain-v2'
+        },
+        "source-layer": "contour",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#ff69b4",
+            "line-width": 1
+        }
+    });
+});
