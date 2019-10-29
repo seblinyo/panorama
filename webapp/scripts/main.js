@@ -5,7 +5,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
     center: [13.673237, 47.402031], // starting position [lng, lat]
-    zoom: 14,
+    zoom: 15,
     pitch: 60, // pitch in degrees
     bearing: 160, // bearing in degrees
 });
@@ -30,13 +30,14 @@ map.on('load', function () {
         }
     });
 
+    // building height extrusion
     map.addLayer({
         'id': '3d-buildings',
         'source': 'composite',
         'source-layer': 'building',
         'filter': ['==', 'extrude', 'true'],
         'type': 'fill-extrusion',
-        'minzoom': 15,
+        'minzoom': 14,
         'paint': {
             'fill-extrusion-color': '#aaa',
             // interpolate for smooth zoom in transition effect
@@ -54,6 +55,9 @@ map.on('load', function () {
             'fill-extrusion-opacity': .9
         }
     });
+
+    // zoom and rotation controls
+    map.addControl(new mapboxgl.NavigationControl());
 
 
 });
