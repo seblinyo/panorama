@@ -71,6 +71,11 @@ body {
     font-size: 1rem;
 }
 
+.owners a {
+    text-decoration: none;
+    color: #5e5e5e;
+}
+
 
 /* ========== UTILITIES =========== */
 
