@@ -1,12 +1,26 @@
 library(rayshader)
 
-newtiff = raster::raster("small.tif")
-el1 = raster::as.matrix(newtiff)
-el1 %>%
-  sphere_shade(zscale = 10, texture = "imhof1") %>%
-  add_shadow(ray_shade(el1, zscale = 50)) %>%
-  add_shadow(ambient_shade(el1, zscale = 50)) %>%
-  plot_3d(el1, zscale = 50, theta = -45, phi = 45, water = TRUE,
-          windowsize = c(1000,800), zoom = 0.75, waterlinealpha = 0.3,
-          wateralpha = 0.5, watercolor = "blue", waterlinecolor = "black")
+elev_img <- raster::raster("small.tif")
+#elev_matrix <- matrix(
+#raster::extract(elev_img, raster::extent(elev_img), buffer = 1000), 
+#  nrow = ncol(elev_img), ncol = nrow(elev_img)
+#)
+
+elev_matrix <- raster::as.matrix(elev_img)
+
+# calculate rayshader layers
+ambmat <- ambient_shade(elev_matrix, zscale = 30)
+raymat <- ray_shade(elev_matrix, zscale = 30, lambert = TRUE)
+watermap <- detect_water(elev_matrix)
+
+zscale <- 50
+rgl::clear3d()
+elev_matrix %>% 
+  sphere_shade(texture = "imhof1") %>% 
+  add_water(watermap, color = "imhof1") %>%
+  add_shadow(raymat, max_darken = 0.5) %>%
+  add_shadow(ambmat, max_darken = 0.5) %>%
+  plot_3d(elev_matrix, zscale = zscale, windowsize = c(1200, 1000),
+          water = TRUE, soliddepth = -max(elev_matrix)/zscale, wateralpha = 0,
+          theta = 70, phi = 30, zoom = 0.65, fov = 10)
 render_snapshot()
