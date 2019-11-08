@@ -53,6 +53,8 @@ map.on('load', function () {
         }
     });
 
+    // add an animated map camera around perspective point
+
     // zoom and rotation controls
     map.addControl(new mapboxgl.NavigationControl());
 
