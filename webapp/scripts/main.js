@@ -16,14 +16,11 @@ map.on('load', function () {
         "id": "terrain-data",
         "type": "line",
         "source": {
-            type: 'vector',
-            url: 'mapbox://mapbox.mapbox-terrain-v2'
+            type: 'raster-dem',
+            url: 'mapbox://mapbox-terrain-rgb'
         },
-        "source-layer": "contour",
-        "layout": {
-            "line-join": "round",
-            "line-cap": "round"
-        },
+        "source-layer": "hillshade",
+        "layout": {},
         "paint": {
             "line-color": "#aaa",
             "line-width": 1
