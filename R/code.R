@@ -1,4 +1,5 @@
 library(rayshader)
+library(geoviz)
 
 elev_img <- raster::raster("new-cut.tif")
 #elev_matrix <- matrix(
