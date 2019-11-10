@@ -1,6 +1,7 @@
 library(rayshader)
 library(geoviz)
 
+rgl::clear3d()
 
 
 #from https://github.com/wcmbishop/rayshader-demo/blob/master/R/find-image-coordinates.R
@@ -68,20 +69,20 @@ rayshader::plot_3d(
   zscale = raster_zscale(dem),
   solid = TRUE,
   shadow = TRUE,
-  shadowdepth = -150,
-  water = TRUE,
-  waterdepth = 740,
-  watercolor = "lightblue"
+  shadowdepth = -100,
+  #water = TRUE,
+  #waterdepth = 740,
+  #watercolor = "lightblue"
 )
 
 rayshader::render_label(
   elmat,
-  x = 350,
-  y = 240,
-  z = 3000,
+  x = 718,
+  y = 150,
+  z = 1000,
   zscale = raster_zscale(dem),
   freetype = FALSE,
-  text = "omg it's working",
+  text = "Far Left",
   textsize = 2,
   dashed = TRUE,
   linewidth = 3
@@ -89,26 +90,54 @@ rayshader::render_label(
 
 rayshader::render_label(
   elmat,
-  x = 750,
-  y = 140,
+  x = 553,
+  y = 150,
+  z = 3000,
+  zscale = raster_zscale(dem),
+  freetype = FALSE,
+  text = "Hauser Kaibling (2015m)",
+  textsize = 2,
+  dashed = TRUE,
+  linewidth = 3
+)
+#Planai (1906m)
+rayshader::render_label(
+  elmat,
+  x = 310,
+  y = 95,
   z = 2000,
   zscale = raster_zscale(dem),
   freetype = FALSE,
-  text = "another one",
+  text = "Hochwurzen (1849m)",
   textsize = 2,
   dashed = TRUE,
-  linewidth = 2
+  linewidth = 3
 )
 
-rgl::view3d(theta =290, phi = 18, zoom = 0.5, fov = 5)
+rayshader::render_label(
+  elmat,
+  x = 167,
+  y = 95,
+  z = 4000,
+  zscale = raster_zscale(dem),
+  freetype = FALSE,
+  text = "Gasselhöhe (2001m)",
+  textsize = 2,
+  dashed = TRUE,
+  linewidth = 3
+)
 
 
+#rgl::view3d(theta =290, phi = 18, zoom = 0.5, fov = 5)
 
 #rayshader::render_depth(
 #  focus = 0.5,
 #  fstop = 18,
 #  filename = "scene.png"
 #)
+
+
+
 
 
 
