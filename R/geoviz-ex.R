@@ -111,8 +111,8 @@ routes14 <- data.frame(cbind(name = 14, lat = tracklog$routes$`14`$lat, lon = tr
 routes15 <- data.frame(cbind(name = 15, lat = tracklog$routes$`15`$lat, lon = tracklog$routes$`15`$lon))
 
 
-routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
-                           routes10,routes11,routes12,routes13,routes14,routes15))
+# routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
+#                            routes10,routes11,routes12,routes13,routes14,routes15))
 
 # run the beow to remove clumpsy variables from your Global environment
 # remove(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,routes10,
@@ -123,7 +123,12 @@ add_gps_to_rayshader(
   routes1$lat,
   routes1$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
@@ -135,7 +140,12 @@ add_gps_to_rayshader(
   routes2$lat,
   routes2$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
@@ -147,7 +157,12 @@ add_gps_to_rayshader(
   routes3$lat,
   routes3$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = TRUE,
@@ -159,7 +174,12 @@ add_gps_to_rayshader(
   routes4$lat,
   routes4$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
@@ -171,7 +191,12 @@ add_gps_to_rayshader(
   routes5$lat,
   routes5$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
@@ -183,7 +208,12 @@ add_gps_to_rayshader(
   routes6$lat,
   routes6$lon,
   800,
+<<<<<<< HEAD
   line_width = 5,
+=======
+  clamp_to_ground = TRUE,
+  line_width = 1,
+>>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
