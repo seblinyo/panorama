@@ -1,4 +1,4 @@
-setwd("TUDresden/ACFS/panorama/R")
+# setwd("TUDresden/ACFS/panorama/R")
 
 library(rayshader)
 library(geoviz)
@@ -18,7 +18,7 @@ raymat <- ray_shade(elev_matrix, zscale = 10, lambert = TRUE)
 watermap <- detect_water(elev_matrix)
 
 
-# GPS Skii routes
+# ============GPS Skii routes
 tracklog <- readGPX("skii-route_edited.gpx")
 #Increase this to ~60 for a higher resolution (but slower) image
 

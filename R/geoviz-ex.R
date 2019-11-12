@@ -110,8 +110,8 @@ routes14 <- data.frame(cbind(name = 14, lat = tracklog$routes$`14`$lat, lon = tr
 routes15 <- data.frame(cbind(name = 15, lat = tracklog$routes$`15`$lat, lon = tracklog$routes$`15`$lon))
 
 
-routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
-                           routes10,routes11,routes12,routes13,routes14,routes15))
+# routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
+#                            routes10,routes11,routes12,routes13,routes14,routes15))
 
 # run the beow to remove clumpsy variables from your Global environment
 # remove(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,routes10,
@@ -122,6 +122,7 @@ add_gps_to_rayshader(
   routes1$lat,
   routes1$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
@@ -134,6 +135,7 @@ add_gps_to_rayshader(
   routes2$lat,
   routes2$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
@@ -146,6 +148,7 @@ add_gps_to_rayshader(
   routes3$lat,
   routes3$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
@@ -158,6 +161,7 @@ add_gps_to_rayshader(
   routes4$lat,
   routes4$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
@@ -170,6 +174,7 @@ add_gps_to_rayshader(
   routes15$lat,
   routes15$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
@@ -182,6 +187,7 @@ add_gps_to_rayshader(
   routes12$lat,
   routes12$lon,
   800,
+  clamp_to_ground = TRUE,
   line_width = 1,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
