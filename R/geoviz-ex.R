@@ -2,6 +2,10 @@ library(rayshader)
 library(geoviz)
 library(plotKML) # for reading GPX files
 require(extrafont) # to curl fonts from OS.
+library(magick)
+
+# Set the working directory
+setwd("D:/Panorama/panorama_new/panorama/R")
 
 rgl::clear3d()
 
@@ -13,6 +17,8 @@ rgl::clear3d()
 #   list(x = x_img, y = y_img)
 # }
 
+# ============DEM =========================== #
+#=========================================================#
 
 lat <- 47.394319
 long <- 13.687770
@@ -31,52 +37,6 @@ elmat = matrix(
   ncol = nrow(dem)
 )
 
-sunangle <- 270
-
-#mapbox overlay if we want
-#overlay_image <-
-#  slippy_overlay(
-#    dem,
-#    image_source = "mapbox",
-#    image_type = "satellite",
-#    png_opacity = 0.6,
-#    api_key = mapbox_key
-# )
-
-
-scene <- elmat %>%
-  sphere_shade(sunangle = sunangle, texture = "imhof4") %>%
-  #add_overlay(overlay_image) %>%
-  add_shadow(
-    ray_shade(
-      elmat,
-      anglebreaks = seq(30, 60),
-      sunangle = sunangle,
-      multicore = TRUE,
-      lambert = FALSE,
-      remove_edges = FALSE
-    )
-  ) %>%
-  add_shadow(
-    ambient_shade(
-      elmat, 
-      multicore = TRUE, 
-      remove_edges = FALSE
-    )
-  )
-
-
-rayshader::plot_3d(
-  scene,
-  elmat,
-  zscale = raster_zscale(dem),
-  solid = TRUE,
-  shadow = TRUE,
-  shadowdepth = -100,
-  #water = TRUE,
-  #waterdepth = 740,
-  #watercolor = "lightblue"
-)
 
 # ============GPS Skii routes =========================== #
 #=========================================================#
@@ -121,363 +81,421 @@ routes18 <- data.frame(cbind(name = 18, lat = tracklog$routes$`18`$lat, lon = tr
 # remove(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,routes10,
 #        routes11,routes12,routes13,routes14,routes15)
 
-add_gps_to_rayshader(
-  dem,
-  routes1$lat,
-  routes1$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
+n_frames <- 12
+sunangle <- c(30,60,90,120,150,180,210,240,270,300,330,360)
+#sunangle <- 270
 
-add_gps_to_rayshader(
-  dem,
-  routes2$lat,
-  routes2$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
+#mapbox overlay if we want
+#overlay_image <-
+#  slippy_overlay(
+#    dem,
+#    image_source = "mapbox",
+#    image_type = "satellite",
+#    png_opacity = 0.6,
+#    api_key = mapbox_key
+# )
 
-add_gps_to_rayshader(
-  dem,
-  routes3$lat,
-  routes3$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes4$lat,
-  routes4$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes5$lat,
-  routes5$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes6$lat,
-  routes6$lon,
-  800,
-  line_width = 5,
-  clamp_to_ground = TRUE,
-  lightsaber = FALSE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes7$lat,
-  routes7$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes8$lat,
-  routes8$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes9$lat,
-  routes9$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes10$lat,
-  routes10$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes11$lat,
-  routes11$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes12$lat,
-  routes12$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes13$lat,
-  routes13$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes14$lat,
-  routes14$lon,
-  800,
-  line_width = 5,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes15$lat,
-  routes15$lon,
-  800,
-  line_width = 4,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes16$lat,
-  routes16$lon,
-  800,
-  line_width = 4,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-add_gps_to_rayshader(
-  dem,
-  routes17$lat,
-  routes17$lon,
-  800,
-  line_width = 4,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-
-add_gps_to_rayshader(
-  dem,
-  routes18$lat,
-  routes18$lon,
-  800,
-  line_width = 4,
-  lightsaber = FALSE,
-  clamp_to_ground = TRUE,
-  zscale = raster_zscale(dem),
-  ground_shadow = FALSE,
-  colour = "purple"
-)
-
-
-
-
-rayshader::render_label(
-  elmat,
-  x = 718,
-  y = 150,
-  z = 1000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Hauser Kaibling (2015m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3
-)
-
- rayshader::render_label(
+img_frames <- paste0("shadow", seq_len(n_frames), ".png")
+for (i in seq_len(n_frames)) {
+  message(paste(" - image", i, "of", n_frames))
+  scene <- elmat %>%
+    sphere_shade(sunangle = sunangle, texture = "imhof4") %>%
+    #add_overlay(overlay_image) %>%
+    add_shadow(
+      ray_shade(
+        elmat,
+        anglebreaks = seq(30, 60),
+        sunangle = sunangle,
+        multicore = TRUE,
+        lambert = FALSE,
+        remove_edges = FALSE
+      )
+    ) %>%
+    add_shadow(
+      ambient_shade(
+        elmat, 
+        multicore = TRUE, 
+        remove_edges = FALSE
+      )
+    )
+  
+  
+  rayshader::plot_3d(
+    scene,
+    elmat,
+    zscale = raster_zscale(dem),
+    solid = TRUE,
+    shadow = TRUE,
+    shadowdepth = -100
+    #water = TRUE,
+    #waterdepth = 740,
+    #watercolor = "lightblue"
+  )
+  
+  
+  
+  add_gps_to_rayshader(
+    dem,
+    routes1$lat,
+    routes1$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes2$lat,
+    routes2$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes3$lat,
+    routes3$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes4$lat,
+    routes4$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes5$lat,
+    routes5$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes6$lat,
+    routes6$lon,
+    800,
+    line_width = 5,
+    clamp_to_ground = TRUE,
+    lightsaber = FALSE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes7$lat,
+    routes7$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes8$lat,
+    routes8$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes9$lat,
+    routes9$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes10$lat,
+    routes10$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes11$lat,
+    routes11$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes12$lat,
+    routes12$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes13$lat,
+    routes13$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes14$lat,
+    routes14$lon,
+    800,
+    line_width = 5,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes15$lat,
+    routes15$lon,
+    800,
+    line_width = 4,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes16$lat,
+    routes16$lon,
+    800,
+    line_width = 4,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  add_gps_to_rayshader(
+    dem,
+    routes17$lat,
+    routes17$lon,
+    800,
+    line_width = 4,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  
+  add_gps_to_rayshader(
+    dem,
+    routes18$lat,
+    routes18$lon,
+    800,
+    line_width = 4,
+    lightsaber = FALSE,
+    clamp_to_ground = TRUE,
+    zscale = raster_zscale(dem),
+    ground_shadow = FALSE,
+    colour = "red"
+  )
+  
+  
+  
+  
+  rayshader::render_label(
+    elmat,
+    x = 718,
+    y = 150,
+    z = 1000,
+    zscale = raster_zscale(dem),
+    freetype = FALSE,
+    text = "Hauser Kaibling (2015m)",
+    textsize = 2,
+    dashed = TRUE,
+    linewidth = 3
+  )
+  
+   rayshader::render_label(
+     elmat,
+     x = 553,
+     y = 150,
+     z = 3000,
+     zscale = raster_zscale(dem),
+     freetype = FALSE,
+     text = "Planai (1901m)",
+     textsize = 2,
+     dashed = TRUE,
+     linewidth = 3
+   )
+  
+  
+  rayshader::render_label(
+     elmat,
+     x = 310,
+     y = 95,
+     z = 2000,
+     zscale = raster_zscale(dem),
+     freetype = FALSE,
+     text = "Hochwurzen (1849m)",
+     textsize = 2,
+     dashed = TRUE,
+     linewidth = 3
+   )
+  
+  rayshader::render_label(
    elmat,
-   x = 553,
-   y = 150,
-   z = 3000,
+   x = 167,
+   y = 95,
+   z = 4000,
    zscale = raster_zscale(dem),
    freetype = FALSE,
-   text = "Planai (1901m)",
+   text = "Gasselhoehe (2001m)",
    textsize = 2,
    dashed = TRUE,
    linewidth = 3
- )
+  )
+  
+  
+  rgl::view3d(theta =200, phi = 38, zoom = 0.75, fov = 5)
+  
 
-
-rayshader::render_label(
+  
+  rayshader::render_label(
+    elmat,
+    x = 718,
+    y = 150,
+    z = 1000,
+    zscale = raster_zscale(dem),
+    freetype = FALSE,
+    text = "Far Left",
+    textsize = 2,
+    dashed = TRUE,
+    linewidth = 3,
+    family = "mono"
+  )
+  
+  rayshader::render_label(
+    elmat,
+    x = 553,
+    y = 150,
+    z = 3000,
+    zscale = raster_zscale(dem),
+    freetype = FALSE,
+    text = "Hauser Kaibling (2015m)",
+    textsize = 2,
+    dashed = TRUE,
+    linewidth = 3,
+    family = "mono"
+  )
+  
+  #Planai (1906m)
+  rayshader::render_label(
    elmat,
    x = 310,
    y = 95,
-   z = 2000,
+    z = 2000,
+    zscale = raster_zscale(dem),
+    freetype = FALSE,
+    text = "Hochwurzen (1849m)",
+    textsize = 2,
+    dashed = TRUE,
+    linewidth = 3,
+   family = "mono"
+  )
+  
+  rayshader::render_label(
+   elmat,
+   x = 167,
+   y = 95,
+   z = 4000,
    zscale = raster_zscale(dem),
    freetype = FALSE,
-   text = "Hochwurzen (1849m)",
+   text = "Gasselhöhe (2001m)",
    textsize = 2,
    dashed = TRUE,
-   linewidth = 3
- )
-
-rayshader::render_label(
- elmat,
- x = 167,
- y = 95,
- z = 4000,
- zscale = raster_zscale(dem),
- freetype = FALSE,
- text = "Gasselhoehe (2001m)",
- textsize = 2,
- dashed = TRUE,
- linewidth = 3
-)
-
-
-rgl::view3d(theta =200, phi = 38, zoom = 0.75, fov = 5)
-
-
-
-
-
-
-
-rayshader::render_label(
-  elmat,
-  x = 718,
-  y = 150,
-  z = 1000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Far Left",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3,
-  family = "mono"
-)
-
-rayshader::render_label(
-  elmat,
-  x = 553,
-  y = 150,
-  z = 3000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Hauser Kaibling (2015m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3,
-  family = "mono"
-)
-
-#Planai (1906m)
-rayshader::render_label(
- elmat,
- x = 310,
- y = 95,
-  z = 2000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Hochwurzen (1849m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3,
- family = "mono"
-)
-
-rayshader::render_label(
- elmat,
- x = 167,
- y = 95,
- z = 4000,
- zscale = raster_zscale(dem),
- freetype = FALSE,
- text = "Gasselhöhe (2001m)",
- textsize = 2,
- dashed = TRUE,
- linewidth = 3,
- family = "mono"
-)
-
+   linewidth = 3,
+   family = "mono"
+  )
+  
+  render_snapshot(img_frames[i])
+  rgl::clear3d()
+  
+}
+  
+# build gif
+magick::image_write_gif(magick::image_read(img_frames), 
+                        path = "Panorama.gif", 
+                        delay = 6/n_frames)
 
 #rgl::view3d(theta =290, phi = 18, zoom = 0.5, fov = 5)
 
