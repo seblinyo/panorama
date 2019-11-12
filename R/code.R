@@ -48,10 +48,12 @@ routes12 <- data.frame(cbind(name = 12, lat = tracklog$routes$`12`$lat, lon = tr
 routes13 <- data.frame(cbind(name = 13, lat = tracklog$routes$`13`$lat, lon = tracklog$routes$`13`$lon))
 routes14 <- data.frame(cbind(name = 14, lat = tracklog$routes$`14`$lat, lon = tracklog$routes$`14`$lon))
 routes15 <- data.frame(cbind(name = 15, lat = tracklog$routes$`15`$lat, lon = tracklog$routes$`15`$lon))
+routes16 <- data.frame(cbind(name = 16, lat = tracklog$routes$`16`$lat, lon = tracklog$routes$`16`$lon))
+routes17 <- data.frame(cbind(name = 17, lat = tracklog$routes$`17`$lat, lon = tracklog$routes$`17`$lon))
+routes18 <- data.frame(cbind(name = 18, lat = tracklog$routes$`18`$lat, lon = tracklog$routes$`18`$lon))
 
-
-routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
-                           routes10,routes11,routes12,routes13,routes14,routes15))
+# routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
+#                            routes10,routes11,routes12,routes13,routes14,routes15))
 
 
 

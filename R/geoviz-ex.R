@@ -1,6 +1,7 @@
 library(rayshader)
 library(geoviz)
 library(plotKML) # for reading GPX files
+require(extrafont) # to curl fonts from OS.
 
 rgl::clear3d()
 
@@ -61,8 +62,8 @@ scene <- elmat %>%
       elmat, 
       multicore = TRUE, 
       remove_edges = FALSE
-      )
     )
+  )
 
 
 rayshader::plot_3d(
@@ -109,7 +110,9 @@ routes12 <- data.frame(cbind(name = 12, lat = tracklog$routes$`12`$lat, lon = tr
 routes13 <- data.frame(cbind(name = 13, lat = tracklog$routes$`13`$lat, lon = tracklog$routes$`13`$lon))
 routes14 <- data.frame(cbind(name = 14, lat = tracklog$routes$`14`$lat, lon = tracklog$routes$`14`$lon))
 routes15 <- data.frame(cbind(name = 15, lat = tracklog$routes$`15`$lat, lon = tracklog$routes$`15`$lon))
-
+routes16 <- data.frame(cbind(name = 16, lat = tracklog$routes$`16`$lat, lon = tracklog$routes$`16`$lon))
+routes17 <- data.frame(cbind(name = 17, lat = tracklog$routes$`17`$lat, lon = tracklog$routes$`17`$lon))
+routes18 <- data.frame(cbind(name = 18, lat = tracklog$routes$`18`$lat, lon = tracklog$routes$`18`$lon))
 
 # routes <- data.frame(rbind(routes1,routes2,routes3,routes4,routes5,routes6,routes7,routes8,routes9,
 #                            routes10,routes11,routes12,routes13,routes14,routes15))
@@ -313,60 +316,109 @@ add_gps_to_rayshader(
   colour = "purple"
 )
 
+add_gps_to_rayshader(
+  dem,
+  routes16$lat,
+  routes16$lon,
+  800,
+  line_width = 4,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "purple"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes17$lat,
+  routes17$lon,
+  800,
+  line_width = 4,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "purple"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes18$lat,
+  routes18$lon,
+  800,
+  line_width = 4,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "purple"
+)
 
 
-# rayshader::render_label(
-#   elmat,
-#   x = 718,
-#   y = 150,
-#   z = 1000,
-#   zscale = raster_zscale(dem),
-#   freetype = FALSE,
-#   text = "Far Left",
-#   textsize = 2,
-#   dashed = TRUE,
-#   linewidth = 3
-# )
 
-# rayshader::render_label(
-#   elmat,
-#   x = 553,
-#   y = 150,
-#   z = 3000,
-#   zscale = raster_zscale(dem),
-#   freetype = FALSE,
-#   text = "Hauser Kaibling (2015m)",
-#   textsize = 2,
-#   dashed = TRUE,
-#   linewidth = 3
-# )
 
-# #Planai (1906m)
-# #rayshader::render_label(
-# #  elmat,
-# #  x = 310,
-# #  y = 95,
-#   z = 2000,
-#   zscale = raster_zscale(dem),
-#   freetype = FALSE,
-#   text = "Hochwurzen (1849m)",
-#   textsize = 2,
-#   dashed = TRUE,
-#   linewidth = 3
-# )
 
-#rayshader::render_label(
-#  elmat,
-#  x = 167,
-#  y = 95,
-#  z = 4000,
-#  zscale = raster_zscale(dem),
-#  freetype = FALSE,
-#  text = "GasselhÃ¶he (2001m)",
-#  textsize = 2,
-#  dashed = TRUE,
-#  linewidth = 3
-#)
+
+
+
+
+rayshader::render_label(
+  elmat,
+  x = 718,
+  y = 150,
+  z = 1000,
+  zscale = raster_zscale(dem),
+  freetype = FALSE,
+  text = "Far Left",
+  textsize = 2,
+  dashed = TRUE,
+  linewidth = 3,
+  family = "mono"
+)
+
+rayshader::render_label(
+  elmat,
+  x = 553,
+  y = 150,
+  z = 3000,
+  zscale = raster_zscale(dem),
+  freetype = FALSE,
+  text = "Hauser Kaibling (2015m)",
+  textsize = 2,
+  dashed = TRUE,
+  linewidth = 3,
+  family = "mono"
+)
+
+#Planai (1906m)
+rayshader::render_label(
+ elmat,
+ x = 310,
+ y = 95,
+  z = 2000,
+  zscale = raster_zscale(dem),
+  freetype = FALSE,
+  text = "Hochwurzen (1849m)",
+  textsize = 2,
+  dashed = TRUE,
+  linewidth = 3,
+ family = "mono"
+)
+
+rayshader::render_label(
+ elmat,
+ x = 167,
+ y = 95,
+ z = 4000,
+ zscale = raster_zscale(dem),
+ freetype = FALSE,
+ text = "Gasselhöhe (2001m)",
+ textsize = 2,
+ dashed = TRUE,
+ linewidth = 3,
+ family = "mono"
+)
 
 
 #rgl::view3d(theta =290, phi = 18, zoom = 0.5, fov = 5)
@@ -376,14 +428,3 @@ add_gps_to_rayshader(
 #  fstop = 18,
 #  filename = "scene.png"
 #)
-
-
-
-
-
-
-
-
-
-
-
