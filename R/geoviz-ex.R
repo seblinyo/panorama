@@ -342,7 +342,7 @@ add_gps_to_rayshader(
   colour = "purple"
 )
 
-<<<<<<< HEAD
+
 add_gps_to_rayshader(
   dem,
   routes18$lat,
@@ -358,7 +358,7 @@ add_gps_to_rayshader(
 
 
 
-=======
+
 rayshader::render_label(
   elmat,
   x = 718,
@@ -414,7 +414,7 @@ rayshader::render_label(
 
 
 rgl::view3d(theta =200, phi = 38, zoom = 0.75, fov = 5)
->>>>>>> 7862c5e333e1e73b858b4f191192582d13a8f51c
+
 
 
 
