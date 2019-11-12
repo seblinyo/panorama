@@ -6,11 +6,11 @@ rgl::clear3d()
 
 
 #from https://github.com/wcmbishop/rayshader-demo/blob/master/R/find-image-coordinates.R
-find_image_coordinates <- function(long, lat, bbox, image_width, image_height) {
-  x_img <- round(image_width * (long - min(bbox$p1$long, bbox$p2$long)) / abs(bbox$p1$long - bbox$p2$long))
-  y_img <- round(image_height * (lat - min(bbox$p1$lat, bbox$p2$lat)) / abs(bbox$p1$lat - bbox$p2$lat))
-  list(x = x_img, y = y_img)
-}
+# find_image_coordinates <- function(long, lat, bbox, image_width, image_height) {
+#   x_img <- round(image_width * (long - min(bbox$p1$long, bbox$p2$long)) / abs(bbox$p1$long - bbox$p2$long))
+#   y_img <- round(image_height * (lat - min(bbox$p1$lat, bbox$p2$lat)) / abs(bbox$p1$lat - bbox$p2$lat))
+#   list(x = x_img, y = y_img)
+# }
 
 
 lat <- 47.394319
@@ -22,6 +22,7 @@ max_tiles <- 10
 #mapbox_key <- "pk.eyJ1Ijoic2ViYXN0aWFuLWNoIiwiYSI6ImNpejkxdzZ5YzAxa2gyd21udGpmaGU0dTgifQ.IrEd_tvrl6MuypVNUGU5SQ"
 
 dem <- mapzen_dem(lat, long, square_km = square_km, max_tiles = max_tiles)
+
 
 elmat = matrix(
   raster::extract(dem, raster::extent(dem), method = 'bilinear'),
@@ -122,11 +123,11 @@ add_gps_to_rayshader(
   routes1$lat,
   routes1$lon,
   800,
-  line_width = 1,
+  line_width = 5,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
-  colour = "white"
+  ground_shadow = FALSE,
+  colour = "red"
 )
 
 add_gps_to_rayshader(
@@ -134,11 +135,11 @@ add_gps_to_rayshader(
   routes2$lat,
   routes2$lon,
   800,
-  line_width = 1,
+  line_width = 5,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
-  colour = "white"
+  ground_shadow = FALSE,
+  colour = "red"
 )
 
 add_gps_to_rayshader(
@@ -146,7 +147,7 @@ add_gps_to_rayshader(
   routes3$lat,
   routes3$lon,
   800,
-  line_width = 1,
+  line_width = 5,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = TRUE,
@@ -158,22 +159,94 @@ add_gps_to_rayshader(
   routes4$lat,
   routes4$lon,
   800,
-  line_width = 1,
+  line_width = 5,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
+  ground_shadow = FALSE,
   colour = "white"
 )
 
 add_gps_to_rayshader(
   dem,
-  routes15$lat,
-  routes15$lon,
+  routes5$lat,
+  routes5$lon,
   800,
-  line_width = 1,
+  line_width = 5,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes6$lat,
+  routes6$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes7$lat,
+  routes7$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes8$lat,
+  routes8$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "red"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes9$lat,
+  routes9$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes10$lat,
+  routes10$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes11$lat,
+  routes11$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
   colour = "white"
 )
 
@@ -182,7 +255,43 @@ add_gps_to_rayshader(
   routes12$lat,
   routes12$lon,
   800,
-  line_width = 1,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "red"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes13$lat,
+  routes13$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "white"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes14$lat,
+  routes14$lon,
+  800,
+  line_width = 5,
+  lightsaber = TRUE,
+  zscale = raster_zscale(dem),
+  ground_shadow = FALSE,
+  colour = "red"
+)
+
+add_gps_to_rayshader(
+  dem,
+  routes15$lat,
+  routes15$lon,
+  800,
+  line_width = 4,
   lightsaber = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = TRUE,
@@ -191,61 +300,58 @@ add_gps_to_rayshader(
 
 
 
+# rayshader::render_label(
+#   elmat,
+#   x = 718,
+#   y = 150,
+#   z = 1000,
+#   zscale = raster_zscale(dem),
+#   freetype = FALSE,
+#   text = "Far Left",
+#   textsize = 2,
+#   dashed = TRUE,
+#   linewidth = 3
+# )
 
+# rayshader::render_label(
+#   elmat,
+#   x = 553,
+#   y = 150,
+#   z = 3000,
+#   zscale = raster_zscale(dem),
+#   freetype = FALSE,
+#   text = "Hauser Kaibling (2015m)",
+#   textsize = 2,
+#   dashed = TRUE,
+#   linewidth = 3
+# )
 
+# #Planai (1906m)
+# #rayshader::render_label(
+# #  elmat,
+# #  x = 310,
+# #  y = 95,
+#   z = 2000,
+#   zscale = raster_zscale(dem),
+#   freetype = FALSE,
+#   text = "Hochwurzen (1849m)",
+#   textsize = 2,
+#   dashed = TRUE,
+#   linewidth = 3
+# )
 
-
-rayshader::render_label(
-  elmat,
-  x = 718,
-  y = 150,
-  z = 1000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Far Left",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3
-)
-
-rayshader::render_label(
-  elmat,
-  x = 553,
-  y = 150,
-  z = 3000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Hauser Kaibling (2015m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3
-)
-#Planai (1906m)
-rayshader::render_label(
-  elmat,
-  x = 310,
-  y = 95,
-  z = 2000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Hochwurzen (1849m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3
-)
-
-rayshader::render_label(
-  elmat,
-  x = 167,
-  y = 95,
-  z = 4000,
-  zscale = raster_zscale(dem),
-  freetype = FALSE,
-  text = "Gasselhöhe (2001m)",
-  textsize = 2,
-  dashed = TRUE,
-  linewidth = 3
-)
+#rayshader::render_label(
+#  elmat,
+#  x = 167,
+#  y = 95,
+#  z = 4000,
+#  zscale = raster_zscale(dem),
+#  freetype = FALSE,
+#  text = "Gasselhöhe (2001m)",
+#  textsize = 2,
+#  dashed = TRUE,
+#  linewidth = 3
+#)
 
 
 #rgl::view3d(theta =290, phi = 18, zoom = 0.5, fov = 5)
