@@ -123,16 +123,12 @@ add_gps_to_rayshader(
   routes1$lat,
   routes1$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "red"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -140,16 +136,12 @@ add_gps_to_rayshader(
   routes2$lat,
   routes2$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "red"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -157,16 +149,12 @@ add_gps_to_rayshader(
   routes3$lat,
   routes3$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
-  colour = "white"
+  ground_shadow = FALSE,
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -174,16 +162,12 @@ add_gps_to_rayshader(
   routes4$lat,
   routes4$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -191,16 +175,12 @@ add_gps_to_rayshader(
   routes5$lat,
   routes5$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -208,16 +188,12 @@ add_gps_to_rayshader(
   routes6$lat,
   routes6$lon,
   800,
-<<<<<<< HEAD
   line_width = 5,
-=======
   clamp_to_ground = TRUE,
-  line_width = 1,
->>>>>>> e3762783136e8c72f9e22ff229442da0fb00469e
-  lightsaber = TRUE,
+  lightsaber = FALSE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -226,10 +202,11 @@ add_gps_to_rayshader(
   routes7$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -238,10 +215,11 @@ add_gps_to_rayshader(
   routes8$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "red"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -250,10 +228,11 @@ add_gps_to_rayshader(
   routes9$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -262,10 +241,11 @@ add_gps_to_rayshader(
   routes10$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -274,10 +254,11 @@ add_gps_to_rayshader(
   routes11$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -286,10 +267,11 @@ add_gps_to_rayshader(
   routes12$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "red"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -298,10 +280,11 @@ add_gps_to_rayshader(
   routes13$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "white"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -310,10 +293,11 @@ add_gps_to_rayshader(
   routes14$lon,
   800,
   line_width = 5,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
   ground_shadow = FALSE,
-  colour = "red"
+  colour = "purple"
 )
 
 add_gps_to_rayshader(
@@ -322,10 +306,11 @@ add_gps_to_rayshader(
   routes15$lon,
   800,
   line_width = 4,
-  lightsaber = TRUE,
+  lightsaber = FALSE,
+  clamp_to_ground = TRUE,
   zscale = raster_zscale(dem),
-  ground_shadow = TRUE,
-  colour = "red"
+  ground_shadow = FALSE,
+  colour = "purple"
 )
 
 
