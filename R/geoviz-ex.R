@@ -99,13 +99,13 @@ img_frames <- paste0("shadow", seq_len(n_frames), ".png")
 for (i in seq_len(n_frames)) {
   message(paste(" - image", i, "of", n_frames))
   scene <- elmat %>%
-    sphere_shade(sunangle = sunangle, texture = "imhof4") %>%
+    sphere_shade(texture = "imhof4") %>%
     #add_overlay(overlay_image) %>%
     add_shadow(
       ray_shade(
         elmat,
         anglebreaks = seq(30, 60),
-        sunangle = sunangle,
+        sunangle = sunangle[i],
         multicore = TRUE,
         lambert = FALSE,
         remove_edges = FALSE
@@ -480,7 +480,7 @@ for (i in seq_len(n_frames)) {
    z = 4000,
    zscale = raster_zscale(dem),
    freetype = FALSE,
-   text = "Gasselhöhe (2001m)",
+   text = "GasselhÃ¶he (2001m)",
    textsize = 2,
    dashed = TRUE,
    linewidth = 3,
