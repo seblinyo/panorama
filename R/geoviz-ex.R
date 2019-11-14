@@ -5,7 +5,7 @@ require(extrafont) # to curl fonts from OS.
 library(magick)
 
 # Set the working directory
-setwd("D:/Panorama/panorama_new/panorama/R")
+setwd("C:/Users/sebas/documents/github/panorama/r")
 
 rgl::clear3d()
 
@@ -369,67 +369,6 @@ for (i in seq_len(n_frames)) {
     colour = "red"
   )
   
-  
-  
-  
-  rayshader::render_label(
-    elmat,
-    x = 718,
-    y = 150,
-    z = 1000,
-    zscale = raster_zscale(dem),
-    freetype = FALSE,
-    text = "Hauser Kaibling (2015m)",
-    textsize = 2,
-    dashed = TRUE,
-    linewidth = 3
-  )
-  
-   rayshader::render_label(
-     elmat,
-     x = 553,
-     y = 150,
-     z = 3000,
-     zscale = raster_zscale(dem),
-     freetype = FALSE,
-     text = "Planai (1901m)",
-     textsize = 2,
-     dashed = TRUE,
-     linewidth = 3
-   )
-  
-  
-  rayshader::render_label(
-     elmat,
-     x = 310,
-     y = 95,
-     z = 2000,
-     zscale = raster_zscale(dem),
-     freetype = FALSE,
-     text = "Hochwurzen (1849m)",
-     textsize = 2,
-     dashed = TRUE,
-     linewidth = 3
-   )
-  
-  rayshader::render_label(
-   elmat,
-   x = 167,
-   y = 95,
-   z = 4000,
-   zscale = raster_zscale(dem),
-   freetype = FALSE,
-   text = "Gasselhoehe (2001m)",
-   textsize = 2,
-   dashed = TRUE,
-   linewidth = 3
-  )
-  
-  
-  rgl::view3d(theta =200, phi = 38, zoom = 0.75, fov = 5)
-  
-
-  
   rayshader::render_label(
     elmat,
     x = 718,
@@ -480,15 +419,16 @@ for (i in seq_len(n_frames)) {
    z = 4000,
    zscale = raster_zscale(dem),
    freetype = FALSE,
-   text = "Gasselhöhe (2001m)",
+   text = "Gasselhoehe (2001m)",
    textsize = 2,
    dashed = TRUE,
    linewidth = 3,
    family = "mono"
   )
   
+  rgl::view3d(theta =200, phi = 38, zoom = 0.75, fov = 5)
   render_snapshot(img_frames[i])
-  rgl::clear3d()
+  #rgl::clear3d()
   
 }
   
